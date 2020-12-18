@@ -1,0 +1,160 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "factoryName": {
+            "type": "string",
+            "metadata": "Data Factory name",
+            "defaultValue": "eureka-df-ltft2xuk6fgsc"
+        },
+        "AzureBlobStorage1_connectionString": {
+            "type": "secureString",
+            "metadata": "Secure string for 'connectionString' of 'AzureBlobStorage1'"
+        },
+        "eureka_system_connectionString": {
+            "type": "secureString",
+            "metadata": "Secure string for 'connectionString' of 'eureka_system'"
+        },
+        "destination_summit_connectionString": {
+            "type": "secureString",
+            "metadata": "Secure string for 'connectionString' of 'destination_summit'"
+        },
+        "other_sources_connectionString": {
+            "type": "secureString",
+            "metadata": "Secure string for 'connectionString' of 'other_sources'"
+        },
+        "eureka_system_common_connectionString": {
+            "type": "secureString",
+            "metadata": "Secure string for 'connectionString' of 'eureka_system_common'"
+        },
+        "source_summit_ir_connectionString": {
+            "type": "secureString",
+            "metadata": "Secure string for 'connectionString' of 'source_summit_ir'"
+        },
+        "AzureBatch1_accessKey": {
+            "type": "secureString",
+            "metadata": "Secure string for 'accessKey' of 'AzureBatch1'"
+        },
+        "summit_api_source_properties_typeProperties_url": {
+            "type": "string",
+            "defaultValue": "https://eureka-aiharmanintdev.symphonysummit.com/SummitWS/REST/Summit_RESTWCF.svc/RESTService/CommonWS_JsonObjCall"
+        },
+        "AzureBatch1_properties_typeProperties_accountName": {
+            "type": "string",
+            "defaultValue": "ab7wtxzrq42aubatch"
+        },
+        "AzureBatch1_properties_typeProperties_batchUri": {
+            "type": "string",
+            "defaultValue": "https://ab7wtxzrq42aubatch.westeurope.batch.azure.com"
+        },
+        "AzureBatch1_properties_typeProperties_poolName": {
+            "type": "string",
+            "defaultValue": "etl-batch-pool"
+        },
+        "mark-for-pull-trigger_properties_prepare_for_pull_parameters_Instance_ID": {
+            "type": "string",
+            "defaultValue": "mstest5"
+        },
+        "first-pull-trigger_properties_instance_sql_firstpull_DW_parameters_Instance_ID": {
+            "type": "string",
+            "defaultValue": "mstest5"
+        },
+        "delta-trigger_properties_tenant-SQL-delta-pull-pipeline_DW_parameters_Instance_ID": {
+            "type": "string",
+            "defaultValue": "mstest4"
+        },
+        "containerUri": {
+            "type": "string",
+            "metadata": "URI to storage account containing linked ARM templates"
+        },
+        "containerSasToken": {
+            "type": "string",
+            "metadata": "Sas token to storage account containing linked ARM templates"
+        }
+    },
+    "variables": {
+        "factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+    },
+    "resources": [
+        {
+            "name": "eureka-df-ltft2xuk6fgsc_ArmTemplate_0",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2018-02-01",
+            "properties": {
+                "mode": "incremental",
+                "templateLink": {
+                    "uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "factoryName": {
+                        "value": "[parameters('factoryName')]"
+                    },
+                    "AzureBlobStorage1_connectionString": {
+                        "value": "[parameters('AzureBlobStorage1_connectionString')]"
+                    },
+                    "eureka_system_connectionString": {
+                        "value": "[parameters('eureka_system_connectionString')]"
+                    },
+                    "destination_summit_connectionString": {
+                        "value": "[parameters('destination_summit_connectionString')]"
+                    },
+                    "other_sources_connectionString": {
+                        "value": "[parameters('other_sources_connectionString')]"
+                    },
+                    "eureka_system_common_connectionString": {
+                        "value": "[parameters('eureka_system_common_connectionString')]"
+                    },
+                    "source_summit_ir_connectionString": {
+                        "value": "[parameters('source_summit_ir_connectionString')]"
+                    },
+                    "AzureBatch1_accessKey": {
+                        "value": "[parameters('AzureBatch1_accessKey')]"
+                    },
+                    "summit_api_source_properties_typeProperties_url": {
+                        "value": "[parameters('summit_api_source_properties_typeProperties_url')]"
+                    },
+                    "AzureBatch1_properties_typeProperties_accountName": {
+                        "value": "[parameters('AzureBatch1_properties_typeProperties_accountName')]"
+                    },
+                    "AzureBatch1_properties_typeProperties_batchUri": {
+                        "value": "[parameters('AzureBatch1_properties_typeProperties_batchUri')]"
+                    },
+                    "AzureBatch1_properties_typeProperties_poolName": {
+                        "value": "[parameters('AzureBatch1_properties_typeProperties_poolName')]"
+                    }
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "eureka-df-ltft2xuk6fgsc_ArmTemplate_1",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2018-02-01",
+            "properties": {
+                "mode": "incremental",
+                "templateLink": {
+                    "uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "factoryName": {
+                        "value": "[parameters('factoryName')]"
+                    },
+                    "mark-for-pull-trigger_properties_prepare_for_pull_parameters_Instance_ID": {
+                        "value": "[parameters('mark-for-pull-trigger_properties_prepare_for_pull_parameters_Instance_ID')]"
+                    },
+                    "first-pull-trigger_properties_instance_sql_firstpull_DW_parameters_Instance_ID": {
+                        "value": "[parameters('first-pull-trigger_properties_instance_sql_firstpull_DW_parameters_Instance_ID')]"
+                    },
+                    "delta-trigger_properties_tenant-SQL-delta-pull-pipeline_DW_parameters_Instance_ID": {
+                        "value": "[parameters('delta-trigger_properties_tenant-SQL-delta-pull-pipeline_DW_parameters_Instance_ID')]"
+                    }
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Resources/deployments', 'eureka-df-ltft2xuk6fgsc_ArmTemplate_0')]"
+            ]
+        }
+    ]
+}
